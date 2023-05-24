@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Map from "@/components/Map";
+import Loader from "@/components/Loader";
 import { useEffect, useState } from "react";
 
 export default function Home() {
@@ -28,7 +29,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Map></Map>
+      {!loading ? <Map eventData={eventData} /> : <Loader />}
     </>
   );
 }

@@ -2,7 +2,7 @@ import GoogleMapReact from "google-map-react";
 import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
 
-const Map = ({ center, zoom }) => {
+const Map = ({ eventData, center, zoom }) => {
   return (
     <div className={styles.map}>
       <GoogleMapReact
