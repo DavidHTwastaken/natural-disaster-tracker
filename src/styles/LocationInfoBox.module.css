@@ -1,0 +1,8 @@
+.location-info {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  width: 400px;
+  min-height: 200px;
+  padding: 20px;
+}
