@@ -1,6 +1,8 @@
+import styles from "@/styles/LocationInfoBox.module.css";
+
 const LocationInfoBox = ({ info }) => {
   return (
-    <div className="">
+    <div className={styles.locationInfo}>
       <h2>Event Location Info</h2>
       <ul>
         <li>

@@ -2,6 +2,7 @@ import Head from "next/head";
 import Map from "@/components/Map";
 import Loader from "@/components/Loader";
 import { useEffect, useState } from "react";
+import Header from "@/components/Header";
 
 export default function Home() {
   const [eventData, setEventData] = useState([]);
@@ -29,6 +30,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       {!loading ? <Map eventData={eventData} /> : <Loader />}
     </>
   );

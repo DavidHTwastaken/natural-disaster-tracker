@@ -2,7 +2,6 @@ import { useState } from "react";
 import GoogleMap from "google-maps-react-markers";
 import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
-import LocationBox from "./LocationInfoBox";
 import LocationInfoBox from "./LocationInfoBox";
 
 const Map = ({ eventData, center, zoom }) => {
