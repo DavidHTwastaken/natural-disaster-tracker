@@ -22,7 +22,7 @@ const Map = ({ eventData, center, zoom }) => {
   return (
     <div className={styles.map}>
       <GoogleMap
-        //apiKey="AIzaSyAISJGaGMl_IPQQocbrsY3P3vbEdSaJ3vA"
+        apiKey="AIzaSyAuAbMfiQHFKAqWC_UcLjJ_Hdxv0OACAVo"
         center={center}
         defaultCenter={center}
         defaultZoom={zoom}
