@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GoogleMap from "google-maps-react-markers";
 import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
 import LocationInfoBox from "./LocationInfoBox";
 
-const Map = ({ eventData, center, zoom }) => {
+const Map = ({ eventData, center, zoom, offline, options }) => {
   const [locationInfo, setLocationInfo] = useState(null);
-  const markers = eventData.map((ev) => {
+
+  const markers = eventData.map((ev, index) => {
     if (ev.categories[0].id === 8) {
       return (
         <LocationMarker
+          key={index}
           lat={ev.geometries[0].coordinates[1]}
           lng={ev.geometries[0].coordinates[0]}
           onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}
@@ -22,10 +24,11 @@ const Map = ({ eventData, center, zoom }) => {
   return (
     <div className={styles.map}>
       <GoogleMap
-        apiKey="AIzaSyAuAbMfiQHFKAqWC_UcLjJ_Hdxv0OACAVo"
+        apiKey={offline ? "" : "AIzaSyAuAbMfiQHFKAqWC_UcLjJ_Hdxv0OACAVo"}
         center={center}
         defaultCenter={center}
         defaultZoom={zoom}
+        options={options}
       >
         {markers}
       </GoogleMap>
@@ -36,10 +39,16 @@ const Map = ({ eventData, center, zoom }) => {
 
 Map.defaultProps = {
   center: {
-    lat: 42.3265,
-    lng: -122.8756,
+    lat: 10,
+    lng: -10,
   },
-  zoom: 6,
+  zoom: 3,
+  offline: true,
+  options: {
+    disableDefaultUI: true,
+    gestureHandling: "greedy",
+    minZoom: 2,
+  },
 };
 
 export default Map;

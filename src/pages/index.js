@@ -7,6 +7,14 @@ import Header from "@/components/Header";
 export default function Home() {
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [offline, setOffline] = useState(false);
+  // Add error listener for authentication
+  useEffect(() => {
+    window.gm_authFailure = function () {
+      console.log("The listener was activated");
+      setOffline(true);
+    };
+  });
 
   useEffect(() => {
     const fetchEvents = async () => {
