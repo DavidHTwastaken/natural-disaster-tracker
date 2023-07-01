@@ -39,7 +39,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {!loading ? <Map eventData={eventData} /> : <Loader />}
+      {!loading ? <Map eventData={eventData} offline={offline} /> : <Loader />}
     </>
   );
 }

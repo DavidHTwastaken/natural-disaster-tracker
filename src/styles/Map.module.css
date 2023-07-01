@@ -3,3 +3,11 @@
   height: 100vh;
   position: relative;
 }
+
+@media only screen and (min-width: 768px) {
+  .map {
+    width: 75vw;
+    height: 100vh;
+    position: relative;
+  }
+}

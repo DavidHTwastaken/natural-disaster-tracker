@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import GoogleMap from "google-maps-react-markers";
 import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
@@ -6,7 +6,12 @@ import LocationInfoBox from "./LocationInfoBox";
 
 const Map = ({ eventData, center, zoom, offline, options }) => {
   const [locationInfo, setLocationInfo] = useState(null);
-
+  const [mapReady, setMapReady] = useState(false);
+  const mapRef = useRef(null);
+  const onGoogleApiLoaded = ({ map }) => {
+    mapRef.current = map;
+    setMapReady(true);
+  };
   const markers = eventData.map((ev, index) => {
     if (ev.categories[0].id === 8) {
       return (
@@ -29,6 +34,7 @@ const Map = ({ eventData, center, zoom, offline, options }) => {
         defaultCenter={center}
         defaultZoom={zoom}
         options={options}
+        onGoogleApiLoaded={onGoogleApiLoaded}
       >
         {markers}
       </GoogleMap>
@@ -48,6 +54,9 @@ Map.defaultProps = {
     disableDefaultUI: true,
     gestureHandling: "greedy",
     minZoom: 2,
+    restriction: {
+      latLngBounds: { north: 85, south: -80, west: -180, east: 180 },
+    },
   },
 };
 

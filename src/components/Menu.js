@@ -1,5 +1,13 @@
+import { useState } from "react";
+
 const Menu = () => {
-  return <div></div>;
+  const [open, setOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setOpen(!open);
+  };
+
+  return <div onClick={toggleMenu}></div>;
 };
 
 export default Menu;
