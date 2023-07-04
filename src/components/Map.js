@@ -4,14 +4,9 @@ import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
 import LocationInfoBox from "./LocationInfoBox";
 
-const Map = ({ eventData, center, zoom, offline, options }) => {
+const Map = ({ eventData, center, zoom, options }) => {
   const [locationInfo, setLocationInfo] = useState(null);
-  const [mapReady, setMapReady] = useState(false);
-  const mapRef = useRef(null);
-  const onGoogleApiLoaded = ({ map }) => {
-    mapRef.current = map;
-    setMapReady(true);
-  };
+
   const markers = eventData.map((ev, index) => {
     if (ev.categories[0].id === 8) {
       return (
@@ -34,7 +29,6 @@ const Map = ({ eventData, center, zoom, offline, options }) => {
         defaultCenter={center}
         defaultZoom={zoom}
         options={options}
-        onGoogleApiLoaded={onGoogleApiLoaded}
       >
         {markers}
       </GoogleMap>

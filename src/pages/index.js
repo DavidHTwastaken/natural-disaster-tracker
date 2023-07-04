@@ -7,21 +7,18 @@ import Header from "@/components/Header";
 export default function Home() {
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [offline, setOffline] = useState(false);
-  // Add error listener for authentication
-  useEffect(() => {
-    window.gm_authFailure = function () {
-      console.log("The listener was activated");
-      setOffline(true);
-    };
-  });
 
   useEffect(() => {
+    // Add error handler for authentication
+    window.gm_authFailure = function () {
+      window.localStorage.setItem("offline", "true");
+      window.location.reload();
+    };
+    // Get the event data
     const fetchEvents = async () => {
       setLoading(true);
       const res = await fetch("https://eonet.gsfc.nasa.gov/api/v2.1/events");
       const { events } = await res.json();
-      console.log(events);
 
       setEventData(events);
       setLoading(false);
@@ -39,7 +36,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {!loading ? <Map eventData={eventData} offline={offline} /> : <Loader />}
+      {!loading ? <Map eventData={eventData} /> : <Loader />}
     </>
   );
 }
