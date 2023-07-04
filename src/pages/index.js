@@ -7,13 +7,20 @@ import Header from "@/components/Header";
 export default function Home() {
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [offline, setOffline] = useState(false);
 
   useEffect(() => {
-    // Add error handler for authentication
+    // Add error handler for API key
     window.gm_authFailure = function () {
-      window.localStorage.setItem("offline", "true");
+      window.sessionStorage.setItem("offline", "true");
       window.location.reload();
     };
+
+    // Check if offline
+    if (window.sessionStorage.getItem("offline")) {
+      setOffline(true);
+    }
+
     // Get the event data
     const fetchEvents = async () => {
       setLoading(true);
@@ -36,7 +43,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      {!loading ? <Map eventData={eventData} /> : <Loader />}
+      {!loading ? <Map eventData={eventData} offline={offline} /> : <Loader />}
     </>
   );
 }

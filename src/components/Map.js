@@ -4,7 +4,7 @@ import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
 import LocationInfoBox from "./LocationInfoBox";
 
-const Map = ({ eventData, center, zoom, options }) => {
+const Map = ({ eventData, center, zoom, options, offline }) => {
   const [locationInfo, setLocationInfo] = useState(null);
 
   const markers = eventData.map((ev, index) => {
@@ -24,11 +24,7 @@ const Map = ({ eventData, center, zoom, options }) => {
   return (
     <div className={styles.map}>
       <GoogleMap
-        apiKey={
-          window.localStorage.getItem("offline")
-            ? ""
-            : "AIzaSyAuAbMfiQHFKAqWC_UcLjJ_Hdxv0OACAVo"
-        }
+        apiKey={offline ? "" : "AIzaSyAuAbMfiQHFKAqWC_UcLjJ_Hdxv0OACAVo"}
         center={center}
         defaultCenter={center}
         defaultZoom={zoom}
