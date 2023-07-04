@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import GoogleMap from "google-maps-react-markers";
 import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
@@ -24,7 +24,11 @@ const Map = ({ eventData, center, zoom, options }) => {
   return (
     <div className={styles.map}>
       <GoogleMap
-        apiKey={offline ? "" : "AIzaSyAuAbMfiQHFKAqWC_UcLjJ_Hdxv0OACAVo"}
+        apiKey={
+          window.localStorage.getItem("offline")
+            ? ""
+            : "AIzaSyAuAbMfiQHFKAqWC_UcLjJ_Hdxv0OACAVo"
+        }
         center={center}
         defaultCenter={center}
         defaultZoom={zoom}
