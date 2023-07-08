@@ -24,7 +24,9 @@ export default function Home() {
     // Get the event data
     const fetchEvents = async () => {
       setLoading(true);
-      const res = await fetch("https://eonet.gsfc.nasa.gov/api/v2.1/events");
+      const res = await fetch(
+        "https://eonet.gsfc.nasa.gov/api/v2.1/events?status=open"
+      );
       const { events } = await res.json();
 
       setEventData(events);
