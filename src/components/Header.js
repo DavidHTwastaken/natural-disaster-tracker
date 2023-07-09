@@ -7,7 +7,7 @@ const Header = () => {
     <header className={styles.header}>
       <h1>
         <Icon icon={locationIcon} />
-        Natural Disasters Tracker (Powered By NASA)
+        Natural Events Tracker (Powered By NASA)
       </h1>
     </header>
   );
