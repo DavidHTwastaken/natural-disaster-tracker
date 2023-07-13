@@ -1,14 +1,12 @@
 import styles from "@/styles/Header.module.css";
-import { Icon } from "@iconify/react";
-import locationIcon from "@iconify/icons-mdi/fire-alert";
+import HamburgerIcon from "./HamburgerIcon";
 
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h1>
-        <Icon icon={locationIcon} />
-        Natural Events Tracker (Powered By NASA)
-      </h1>
+      <h1>Natural Events Tracker</h1>
+      <h1> (Powered By NASA)</h1>
+      <HamburgerIcon />
     </header>
   );
 };

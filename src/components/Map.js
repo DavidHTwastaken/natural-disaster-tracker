@@ -10,8 +10,8 @@ const Map = ({ eventData, center, zoom, options, offline }) => {
     return (
       <LocationMarker
         key={index}
-        lat={ev.geometries[0].coordinates[1]}
-        lng={ev.geometries[0].coordinates[0]}
+        lat={ev.geometry[0].coordinates[1]}
+        lng={ev.geometry[0].coordinates[0]}
         type={ev.categories[0].title}
         onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}
       />
