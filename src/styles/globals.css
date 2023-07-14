@@ -1,6 +1,6 @@
 html {
   min-width: 320px;
-  font-size: 100%;
+  font-size: calc(15px + 0.390625vw);
 }
 
 body {

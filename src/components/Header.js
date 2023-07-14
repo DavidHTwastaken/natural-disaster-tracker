@@ -6,7 +6,9 @@ const Header = () => {
     <header className={styles.header}>
       <h1>Natural Events Tracker</h1>
       <h1> (Powered By NASA)</h1>
-      <HamburgerIcon />
+      <div className={styles.menu}>
+        <HamburgerIcon />
+      </div>
     </header>
   );
 };
