@@ -1,5 +1,7 @@
 .header {
-  padding: 5%;
+  display: flex;
+  justify-content: right;
+  padding: 6% 6% 4% 6%;
   background-color: firebrick;
   color: #fff;
   position: fixed;
@@ -12,9 +14,12 @@
 .header h1 {
   font-size: 1rem;
   padding: 0;
-  margin: 0;
+  margin: auto;
   text-align: center;
+  display: inline-block;
 }
 
 .menu {
+  display: inline-block;
+  margin-top: 0.5rem;
 }
