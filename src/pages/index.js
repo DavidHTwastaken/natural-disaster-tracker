@@ -3,11 +3,13 @@ import Map from "@/components/Map";
 import Loader from "@/components/Loader";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import Menu from "@/components/Menu";
 
 export default function Home() {
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [offline, setOffline] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     // Add error handler for API key
@@ -50,7 +52,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <Header menuOnClick={setMenuOpen} />
+      {menuOpen && <Menu />}
       {!loading ? <Map eventData={eventData} offline={offline} /> : <Loader />}
     </>
   );
