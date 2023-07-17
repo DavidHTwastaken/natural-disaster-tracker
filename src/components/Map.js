@@ -6,6 +6,10 @@ import LocationInfoBox from "./LocationInfoBox";
 
 const Map = ({ eventData, center, zoom, options, offline }) => {
   const [locationInfo, setLocationInfo] = useState(null);
+
+  /**TODO:
+   * Implement a filter that determines which markers are shown
+   * */
   const markers = eventData.map((ev, index) => {
     return (
       <LocationMarker
