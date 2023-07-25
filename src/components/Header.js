@@ -4,7 +4,7 @@ import HamburgerIcon from "./HamburgerIcon";
 const Header = ({ menuOnClick }) => {
   return (
     <header className={styles.header}>
-      <div>
+      <div className={styles.titleWrapper}>
         <h1 className={styles.title}>Natural Events Tracker</h1>
         <h1>(Powered By NASA)</h1>
       </div>
