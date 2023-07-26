@@ -33,7 +33,7 @@ const Map = ({ eventData, center, zoom, options, offline }) => {
       >
         {markers}
       </GoogleMap>
-      {locationInfo && <LocationInfoBox info={locationInfo} />}
+      {/* {locationInfo && <LocationInfoBox info={locationInfo} />} */}
     </div>
   );
 };

@@ -1,14 +1,31 @@
 import styles from "@/styles/Menu.module.css";
-import Checkbox from "@mui/material/Checkbox";
+import { FormGroup, Checkbox, FormControlLabel } from "@mui/material/";
 
 const Menu = () => {
   return (
     <div className={styles.menu}>
-      <Checkbox></Checkbox>
-      <Checkbox></Checkbox>
-      <Checkbox></Checkbox>
-      <Checkbox></Checkbox>
-      <Checkbox></Checkbox>
+      <FormGroup>
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label="Earthquakes"
+        />
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label="Floods"
+        />
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label="Severe Storms"
+        />
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label="Volcanoes"
+        />
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label="Wildfires"
+        />
+      </FormGroup>
     </div>
   );
 };
