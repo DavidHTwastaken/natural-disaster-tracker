@@ -1,25 +1,19 @@
 .header {
   display: flex;
-  justify-content: right;
-  padding: 1.75rem 1.25rem;
+  justify-content: space-around;
+  height: max-content;
+  padding: 1.25rem 0.5rem;
   background-color: firebrick;
   color: #fff;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  left: 0;
 }
 
-.header h1 {
+.titleWrapper h1 {
   font-size: 1rem;
   padding: 0;
-  margin: auto;
-  text-align: center;
-  display: inline-block;
+  margin: 0;
 }
 
-.header .title {
+.titleWrapper .title {
   font-size: 1.5rem;
 }
 
@@ -29,6 +23,8 @@
 }
 
 .titleWrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 768px) {

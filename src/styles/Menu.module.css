@@ -1,7 +1,7 @@
 .menu {
   position: relative;
   z-index: 1;
-  height: 20vh;
-  width: 12vw;
+  height: max-content;
   background-color: darkgray;
+  padding: 1rem;
 }
