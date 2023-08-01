@@ -10,6 +10,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [offline, setOffline] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [eventOptions, setEventOptions] = useState({});
 
   useEffect(() => {
     // Add error handler for API key
@@ -52,9 +53,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header menuOnClick={setMenuOpen} />
-      {menuOpen && <Menu />}
-      {!loading ? <Map eventData={eventData} offline={offline} /> : <Loader />}
+      <main>
+        <Header menu={[menuOpen, setMenuOpen]} />
+        {menuOpen && <Menu />}
+        {!loading ? (
+          <Map eventData={eventData} offline={offline} />
+        ) : (
+          <Loader />
+        )}
+      </main>
     </>
   );
 }

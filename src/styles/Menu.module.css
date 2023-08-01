@@ -1,7 +1,9 @@
 .menu {
-  position: relative;
+  position: absolute;
+  top: 0;
   z-index: 1;
   height: max-content;
   background-color: darkgray;
   padding: 1rem;
+  width: 50vw;
 }
