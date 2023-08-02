@@ -10,7 +10,13 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   const [offline, setOffline] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [eventOptions, setEventOptions] = useState({});
+  const [eventOptions, setEventOptions] = useState({
+    earthquakes: true,
+    floods: true,
+    severeStorms: true,
+    volcanoes: true,
+    wildfires: true,
+  });
 
   useEffect(() => {
     // Add error handler for API key
@@ -30,7 +36,8 @@ export default function Home() {
       let res;
       try {
         res = await fetch(
-          "https://eonet.gsfc.nasa.gov/api/v3/events?status=open"
+          // TODO: Change back to allow volcanoes once the API is fixed
+          "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&category=earthquakes,floods,severeStorms,wildfires"
         );
       } catch (error) {
         return console.error(error);
@@ -53,11 +60,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Header menu={[menuOpen, setMenuOpen]} />
+      <Header menu={[menuOpen, setMenuOpen]} />
+      <main style={{ position: "relative" }}>
         {menuOpen && <Menu />}
         {!loading ? (
-          <Map eventData={eventData} offline={offline} />
+          <Map eventData={eventData} offline={offline} options={eventOptions} />
         ) : (
           <Loader />
         )}

@@ -10,17 +10,21 @@ const Map = ({ eventData, center, zoom, options, offline }) => {
   /**TODO:
    * Implement a filter that determines which markers are shown
    * */
-  const markers = eventData.map((ev, index) => {
-    return (
-      <LocationMarker
-        key={index}
-        lat={ev.geometry[0].coordinates[1]}
-        lng={ev.geometry[0].coordinates[0]}
-        type={ev.categories[0].title}
-        onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}
-      />
-    );
-  });
+  const markers = eventData
+    .filter((ev) => {
+      return options[ev.categories.id];
+    })
+    .map((ev, index) => {
+      return (
+        <LocationMarker
+          key={index}
+          lat={ev.geometry[0].coordinates[1]}
+          lng={ev.geometry[0].coordinates[0]}
+          type={ev.categories[0].title}
+          onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}
+        />
+      );
+    });
 
   return (
     <div className={styles.map}>
