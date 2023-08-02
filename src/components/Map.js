@@ -4,15 +4,12 @@ import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
 import LocationInfoBox from "./LocationInfoBox";
 
-const Map = ({ eventData, center, zoom, options, offline }) => {
+const Map = ({ eventData, center, zoom, options, eventOptions, offline }) => {
   const [locationInfo, setLocationInfo] = useState(null);
 
-  /**TODO:
-   * Implement a filter that determines which markers are shown
-   * */
   const markers = eventData
     .filter((ev) => {
-      return options[ev.categories.id];
+      return eventOptions[ev.categories[0].id];
     })
     .map((ev, index) => {
       return (

@@ -1,7 +1,7 @@
 import styles from "@/styles/Menu.module.css";
 import { FormGroup, Checkbox, FormControlLabel } from "@mui/material/";
 
-const Menu = () => {
+const Menu = ({ update }) => {
   return (
     <div className={styles.menu}>
       <FormGroup>

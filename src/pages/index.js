@@ -17,7 +17,6 @@ export default function Home() {
     volcanoes: true,
     wildfires: true,
   });
-
   useEffect(() => {
     // Add error handler for API key
     window.gm_authFailure = function () {
@@ -61,10 +60,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header menu={[menuOpen, setMenuOpen]} />
-      <main style={{ position: "relative" }}>
-        {menuOpen && <Menu />}
+      <main style={{ position: "relative", overflow: "hidden" }}>
+        {menuOpen && <Menu update={setEventData} />}
         {!loading ? (
-          <Map eventData={eventData} offline={offline} options={eventOptions} />
+          <Map
+            eventData={eventData}
+            offline={offline}
+            eventOptions={eventOptions}
+          />
         ) : (
           <Loader />
         )}
