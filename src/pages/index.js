@@ -61,7 +61,7 @@ export default function Home() {
       </Head>
       <Header menu={[menuOpen, setMenuOpen]} />
       <main style={{ position: "relative", overflow: "hidden" }}>
-        {menuOpen && <Menu update={setEventData} />}
+        {menuOpen && <Menu updater={[eventOptions, setEventOptions]} />}
         {!loading ? (
           <Map
             eventData={eventData}
