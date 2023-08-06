@@ -1,9 +1,8 @@
 import Head from "next/head";
-import Map from "@/components/Map";
 import Loader from "@/components/Loader";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
-import Menu from "@/components/Menu";
+import Main from "@/components/Main";
 
 export default function Home() {
   const [eventData, setEventData] = useState([]);
@@ -60,18 +59,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header menu={[menuOpen, setMenuOpen]} />
-      <main style={{ position: "relative", overflow: "hidden" }}>
-        {menuOpen && <Menu updater={[eventOptions, setEventOptions]} />}
-        {!loading ? (
-          <Map
-            eventData={eventData}
-            offline={offline}
-            eventOptions={eventOptions}
-          />
-        ) : (
-          <Loader />
-        )}
-      </main>
+      {loading ? (
+        <Loader />
+      ) : (
+        <Main
+          eventOptionsState={[eventOptions, setEventOptions]}
+          menuOpen={menuOpen}
+          offline={offline}
+          eventData={eventData}
+        />
+      )}
     </>
   );
 }

@@ -1,7 +1,7 @@
 import styles from "@/styles/Menu.module.css";
 import { FormGroup, Checkbox, FormControlLabel } from "@mui/material/";
 
-const Menu = ({ updater }) => {
+const Menu = ({ updater, isOpen }) => {
   const [eventOptions, setEventOptions] = updater;
 
   const updateEventOptions = (ev) => {
@@ -11,7 +11,7 @@ const Menu = ({ updater }) => {
   };
 
   return (
-    <div className={styles.menu}>
+    <div className={`${styles.menu} ${!isOpen ? styles.invisible : ""}`}>
       <FormGroup>
         <FormControlLabel
           id="earthquakes"
