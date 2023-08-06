@@ -1,25 +1,41 @@
 .header {
   display: flex;
-  justify-content: right;
-  padding: 6% 6% 4% 6%;
+  justify-content: space-around;
+  height: max-content;
+  padding: 1.25rem 0.5rem;
   background-color: firebrick;
   color: #fff;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  right: 0;
-  left: 0;
 }
 
-.header h1 {
+.titleWrapper h1 {
   font-size: 1rem;
   padding: 0;
-  margin: auto;
-  text-align: center;
-  display: inline-block;
+  margin: 0;
+}
+
+.titleWrapper .title {
+  font-size: 1.5rem;
 }
 
 .menu {
   display: inline-block;
   margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 992px) {
+  .menu {
+    display: none;
+  }
+  .titleWrapper h1 {
+    text-align: center;
+  }
 }

@@ -4,19 +4,24 @@ import styles from "@/styles/Map.module.css";
 import LocationMarker from "./LocationMarker";
 import LocationInfoBox from "./LocationInfoBox";
 
-const Map = ({ eventData, center, zoom, options, offline }) => {
+const Map = ({ eventData, center, zoom, options, eventOptions, offline }) => {
   const [locationInfo, setLocationInfo] = useState(null);
-  const markers = eventData.map((ev, index) => {
-    return (
-      <LocationMarker
-        key={index}
-        lat={ev.geometry[0].coordinates[1]}
-        lng={ev.geometry[0].coordinates[0]}
-        type={ev.categories[0].title}
-        onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}
-      />
-    );
-  });
+
+  const markers = eventData
+    .filter((ev) => {
+      return eventOptions[ev.categories[0].id];
+    })
+    .map((ev, index) => {
+      return (
+        <LocationMarker
+          key={index}
+          lat={ev.geometry[0].coordinates[1]}
+          lng={ev.geometry[0].coordinates[0]}
+          type={ev.categories[0].title}
+          onClick={() => setLocationInfo({ id: ev.id, title: ev.title })}
+        />
+      );
+    });
 
   return (
     <div className={styles.map}>
@@ -29,7 +34,7 @@ const Map = ({ eventData, center, zoom, options, offline }) => {
       >
         {markers}
       </GoogleMap>
-      {locationInfo && <LocationInfoBox info={locationInfo} />}
+      {/* {locationInfo && <LocationInfoBox info={locationInfo} />} */}
     </div>
   );
 };

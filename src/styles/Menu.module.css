@@ -1,0 +1,30 @@
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 4;
+  height: max-content;
+  background-color: darkgray;
+  padding: 1rem;
+  width: 50vw;
+}
+
+.invisible {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .menu {
+    display: block;
+    left: 0;
+    height: 100%;
+    width: calc(25vw + 1rem);
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

@@ -1,14 +1,21 @@
 import Head from "next/head";
-import Map from "@/components/Map";
 import Loader from "@/components/Loader";
 import { useEffect, useState } from "react";
 import Header from "@/components/Header";
+import Main from "@/components/Main";
 
 export default function Home() {
   const [eventData, setEventData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [offline, setOffline] = useState(false);
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [eventOptions, setEventOptions] = useState({
+    earthquakes: true,
+    floods: true,
+    severeStorms: true,
+    volcanoes: true,
+    wildfires: true,
+  });
   useEffect(() => {
     // Add error handler for API key
     window.gm_authFailure = function () {
@@ -27,7 +34,8 @@ export default function Home() {
       let res;
       try {
         res = await fetch(
-          "https://eonet.gsfc.nasa.gov/api/v3/events?status=open"
+          // TODO: Change back to allow volcanoes once the API is fixed
+          "https://eonet.gsfc.nasa.gov/api/v3/events?status=open&category=earthquakes,floods,severeStorms,wildfires"
         );
       } catch (error) {
         return console.error(error);
@@ -50,8 +58,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
-      {!loading ? <Map eventData={eventData} offline={offline} /> : <Loader />}
+      <Header menu={[menuOpen, setMenuOpen]} />
+      {loading ? (
+        <Loader />
+      ) : (
+        <Main
+          eventOptionsState={[eventOptions, setEventOptions]}
+          menuOpen={menuOpen}
+          offline={offline}
+          eventData={eventData}
+        />
+      )}
     </>
   );
 }
