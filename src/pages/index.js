@@ -6,7 +6,7 @@ import Main from "@/components/Main";
 
 export default function Home() {
   const [eventData, setEventData] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [offline, setOffline] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [eventOptions, setEventOptions] = useState({
