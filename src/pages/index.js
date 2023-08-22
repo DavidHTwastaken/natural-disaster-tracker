@@ -55,6 +55,10 @@ export default function Home() {
       <Head>
         <title>Natural Disaster Tracker</title>
         <meta
+          name="google-site-verification"
+          content="HYW8thcYho7lcTuZvN2rajO--lrT0mVccmhri_0-agE"
+        />
+        <meta
           name="description"
           content="An interactive map showing natural events around the world."
         />
