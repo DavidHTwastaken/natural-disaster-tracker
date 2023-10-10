@@ -1,5 +1,6 @@
 :root {
   --header-height: 5rem;
+  --map-width-wide-screen: 85vw;
 }
 
 html {

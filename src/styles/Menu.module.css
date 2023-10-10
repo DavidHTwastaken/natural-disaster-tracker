@@ -21,7 +21,7 @@
     display: block;
     left: 0;
     height: 100%;
-    width: calc(25vw + 1rem);
+    width: calc(100vw - var(--map-width-wide-screen) + 1rem);
   }
 }
 
